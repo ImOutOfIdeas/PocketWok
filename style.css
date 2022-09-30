@@ -1,0 +1,371 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    font-size: 16px;
+    font-family: 'Oswald', sans-serif;
+    --text-primary: black;
+    --text-secondary: darkgrey;
+    --bg-primary: #23232e;
+    --bg-secondary: #141418;
+    --base-color: lightgrey;
+    --accent-color: white;
+    --palette-display: "block";
+}
+
+
+/* Large Title Layout */
+.largeTitle {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    font-size: 8em;
+    align-content: center;
+    top: 0.5em;
+}
+
+
+/* Main Content Layout */
+body {
+    color: var(--text-primary);
+    background: white;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    color: var(--text-primary);
+    font-size: 80px;
+    letter-spacing: 8px;
+    margin-bottom: 15px;
+}
+
+.subhead {
+    font-size: 35px;
+    color: var(--text-secondary);
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+ul {
+    list-style-type: none;
+    line-height: 2.5;
+}
+
+.question {
+    margin-top: 40px;
+    letter-spacing: 5px;
+}
+
+.response {
+    letter-spacing: 2px;
+    font-weight: 300;
+    margin-bottom: 10vh;
+}
+
+
+li {
+    margin-bottom: 20px;
+}
+
+audio, img {
+    margin-left: 35vw;
+    margin-bottom: 10vh;
+}
+
+.buyButton {
+    position: absolute;
+    left: 45%;
+    transform: translate(0, -50%);
+    align-items: center;
+    width: 12em;
+    height: 4em;
+    border-radius: 10px;
+    font-size: 1em;
+}
+
+.buyButton:hover {
+    background-color: limegreen;
+    color: white;
+    font-weight: 700;
+}
+
+.bottomSpace {
+    color: black;
+    margin-bottom: 20vh;
+}
+
+
+/* Scrollbar styling */
+body::-webkit-scrollbar {
+    width: 0.35rem;
+}
+
+body::-webkit-scrollbar-track {
+    background: black;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: var(--accent-color);
+}
+
+main {
+    margin-left: 5rem;
+    padding: 1rem;
+
+}
+
+
+
+/* Navbar Animation and Handling */
+.navbar-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    height: 100%;
+}
+
+.navbar-nav:hover .logo {
+    color: var(--accent-color);
+}
+
+.nav-item {
+    width: 100%;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    height: 5rem;
+    color: var(--base-color);
+    text-decoration: none;
+    transition: color 400ms ease;
+}
+
+.nav-link:hover {
+    background: var(--bg-secondary);
+}
+.nav-link:hover .fill{
+    fill: var(--accent-color);
+    transition: fill 600ms ease;
+}
+.nav-link:hover .fillStroke{
+    fill: var(--accent-color);
+    stroke: var(--accent-color);
+    transition: fill, stroke 600ms ease;
+}
+.nav-link:hover .stroke{
+    stroke: var(--accent-color);
+    transition: stroke 600ms ease;
+}
+.navbar-nav:hover .logo .link-text{
+    color: var(--accent-color);
+}
+.nav-link:hover .link-text {
+    color: var(--accent-color);
+}
+.navbar-nav:hover .logo svg{
+    stroke: var(--accent-color);
+}
+
+
+.link-text {
+    color: var(--base-color);
+    font-size: 20px;
+    display: none;
+    margin-left: 1rem;
+}
+.navbar:hover .baricons .link-text{
+    animation: iconFade 600ms;
+}
+@keyframes iconFade {
+    0% {filter: opacity(0);}
+    20% {filter: opacity(0);}
+    100% {filter: opacity(100%);}
+}
+
+.logo {
+    align-items: center;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    text-align: center;
+    color: var(--accent-color);
+    background: var(--bg-secondary);
+    font-size: 1.5rem;
+    letter-spacing: 0.3ch;
+    width: 100%;
+    border-bottom: 2px solid var(--accent-color);
+}
+
+.nav-link svg {
+    max-width: 2rem;
+    margin: 0 1.5rem;
+}
+
+.logo .link-text {
+    margin-left: auto;
+    filter: opacity(100%);
+}
+
+.navbar:hover .logo .link-text{
+    animation: logoFade 700ms;
+}
+@keyframes logoFade {
+    0% {filter: opacity(0);}
+    20% {filter: opacity(0);}
+    100% {filter: opacity(100%);}
+}
+
+#accentSwitcher {
+    transform: rotate(0deg);
+    transition: transform 600ms;
+}
+
+.nav-link:hover #accentSwitcher {
+    transform: rotate(-360deg);
+}
+
+#logoIcon {
+    background: var(--bg-secondary);
+}
+
+#logoIcon:hover {
+    cursor: default;
+}
+
+.logo svg {
+    align-self: center;
+    transform: rotate(0deg);
+    transition: transform 600ms ease-in;
+}
+
+.navbar:hover .logo svg {
+    transform: rotate(-180deg);
+}
+
+
+/* Color Wheel Handling */
+#picker {
+padding: 20px;
+position: absolute;
+left: 280px;
+bottom: -300px;
+padding: 60px 60px 60px 30px;
+filter: opacity(100);
+transition: bottom 500ms ease;
+}
+
+#paletteBtn:hover #picker {
+    bottom: -40px;
+}
+
+#colorPaletteSelector{
+    min-width: 200px;
+}
+
+
+/* Small Screen Media Query */
+@media only screen and (max-width: 600px) {
+    main {
+        margin: auto;
+        padding: 1rem;
+    }
+
+    .largeTitle svg {
+        display: none;
+    }
+
+    ul {
+        padding-left: 0px;
+    }
+    .mainContent {
+        margin: auto 8vw;
+
+    }
+
+    .question {
+        font-size: 30px;
+        text-align: center;
+
+    }
+
+    .response {
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .navbar {
+        position: fixed;
+        bottom: 0;
+        width: 100vw;
+        height: 5rem;
+        background-color: var(--bg-primary);
+        z-index: 100;
+    }
+
+    .logo {
+        display: none;
+    }
+
+    .navbar-nav {
+        flex-direction: row;
+        justify-content: center;
+    }
+}
+
+/* Large Screens */
+@media only screen and (min-width: 600px) {
+    main {
+        margin-left: 5rem;
+        padding: 1rem;
+    }
+
+    .smallTitle {
+        display: none;
+    }
+
+    .mainContent {
+        margin: auto 8vw;
+    }
+
+    .question {
+        font-size: 35px;
+        text-align: left;
+    }
+
+    .response {
+        font-size: 20px;
+        text-align: right;
+        margin-left: 35vw;
+    }
+
+    .navbar {
+        width: 5rem;
+        height: 100vh;
+        position: fixed;
+        background-color: var(--bg-primary);
+        transition: width 200ms ease-in;
+    }
+
+    .navbar:hover {
+        width: 18rem;
+    }
+
+    .navbar:hover .link-text {
+        display: block;
+    }
+
+    .nav-link svg {
+        min-width: 2rem;
+        margin: 0 1.5rem;
+    }
+}
