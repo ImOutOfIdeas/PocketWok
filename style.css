@@ -86,18 +86,30 @@ audio, img {
     width: 12em;
     height: 4em;
     border-radius: 10px;
+    border: none;
     font-size: 1em;
+    background-color: rgb(37, 187, 37);
+    color: white;
+    text-shadow: 0 0 4px white;
+    transition: filter ease 300ms;   
 }
 
 .buyButton:hover {
-    background-color: limegreen;
-    color: white;
-    font-weight: 700;
+    filter:brightness(90%);
+    cursor: pointer;
 }
 
 .bottomSpace {
     color: black;
     margin-bottom: 20vh;
+}
+
+
+/* Game Canvas */
+#canvas {
+    background-color: antiquewhite;
+    border-radius: 10px;
+    border: solid 2px black;
 }
 
 
@@ -117,7 +129,6 @@ body::-webkit-scrollbar-thumb {
 main {
     margin-left: 5rem;
     padding: 1rem;
-
 }
 
 

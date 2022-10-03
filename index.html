@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script defer src="https://cdn.jsdelivr.net/npm/@jaames/iro@4"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/@jaames/iro@3"></script>
     <link rel="stylesheet" href="style.css">
     <title>Pocket Wok</title>
 </head>
@@ -86,12 +86,19 @@
                     <img src="assets/pocketwokfront.jpg" alt="Pocket Wok Box" width="500" height="600">
                     <img src="assets/pocketwokback.jpg" alt="Pocket Wok Box" width="500" height="600">
                 </li>
+                <li class="mainContent">
+                    <h1 class="question">Play the game</h1>
+                    <canvas class="response" id="canvas"></canvas>
+                </li>
 
                 <button class="buyButton">Buy Now</button>
             </ul>
             <div class="bottomSpace">-</div>
     </main>
 
-    <script src="script.js"></script>
+    <script src="js/item.js"></script>
+    <script src="js/wok.js"></script>
+    <script src="js/game.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>
