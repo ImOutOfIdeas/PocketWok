@@ -108,10 +108,12 @@ audio, img {
 
 /* Game Canvas */
 #canvas {
-    background-color: antiquewhite;
+    background-color: #fde7c9;
     border-radius: 10px;
     border: solid 2px black;
     margin-right: 20px;
+    background-image: url(assets/pixelKitchen.png);
+    background-size: contain;
 }
 
 
