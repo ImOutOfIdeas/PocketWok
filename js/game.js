@@ -63,7 +63,7 @@ function gameToggle() {
     }
 }
 
-// Runs once on initial click
+// Runs once on setup
 function gameInit() {
     // Instantiate Game Objects
     item = new Item(rando(0, 575), -25, 2);
@@ -71,9 +71,47 @@ function gameInit() {
     
     // Initialize values
     score = 0;
-
+    
     // Start Main Game Loop
     gameLoop();
+}
+
+// Runs continuously (until lose)
+function gameLoop() {
+    // Clear Screen Each Frame
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    
+    // Allows player control
+    if (rightKey && wok.x + wok.w < 600) wok.x += wok.speed;
+    if (leftKey && wok.x > 0) wok.x -= wok.speed;
+    
+    // Check for item movement then collision and game over
+    item.update();
+    collisionCheck();
+    gameOverCheck();
+    
+    // Draw game objects
+    item.draw();
+    wok.draw();
+
+    // ctx.drawImage(wokImg, wok.x, wok.y, wok.w, wok.h);
+
+    // Keep array of possible object images and randomly select one for itemImg
+    // ctx.drawImage(itemImg, item.x, item.y, item.w, item.h);
+
+    
+    // End game if not supposed to be running
+    if (!running) {
+        return;
+    }
+
+    // Keep Score in top left
+    ctx.font = "20px Arial";
+    ctx.fillText(`Ingredients caught: ${score}`, 10, 30);
+    
+    // Repeat Game Loop
+    requestAnimationFrame(gameLoop);
 }
 
 function collisionCheck() {
@@ -103,48 +141,20 @@ function gameOverCheck() {
         ctx.font = "25px Arial";
         ctx.fillText(`You caught ${score} ingredients, pitiful.`, canvas.width / 6.5, canvas.height / 2.4);
         ctx.font = "15px Arial";
-        ctx.fillText("Click Anywhere To Play Again.", canvas.width / 3.6, canvas.height / 1.5);
+        ctx.fillText("Press Spacebar To Play Again.", canvas.width / 3.6, canvas.height / 1.5);
         
+        // Add space to replay Listener;
+        window.addEventListener('keydown', (e) => {
+            switch(e.key) {
+                case(' '):
+                    gameToggle();
+                    break;
+            }
+        })
+
+
         // Falsifies running bool and exits out of gameLoop
         running = false;
         return;
     }
-}
-
-// Runs continuously (until lose)
-function gameLoop() {
-    // Clear Screen Each Frame
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    
-    // Allows player control
-    if (rightKey) wok.x += wok.speed;
-    if (leftKey) wok.x -= wok.speed;
-    
-    // Check for item movement then collision and game over
-    item.update();
-    collisionCheck();
-    gameOverCheck();
-    
-    // Draw game objects
-    item.draw();
-    wok.draw();
-
-    // ctx.drawImage(wokImg, wok.x, wok.y, wok.w, wok.h);
-
-    // Keep array of possible object images and randomly select one for itemImg
-    // ctx.drawImage(itemImg, item.x, item.y, item.w, item.h);
-
-    
-    // End game if not supposed to be running
-    if (!running) {
-        return;
-    }
-
-    // Keep Score in top left
-    ctx.font = "20px Arial";
-    ctx.fillText(`Ingredients caught: ${score}`, 10, 30);
-    
-    // Repeat Game Loop
-    requestAnimationFrame(gameLoop);
 }
