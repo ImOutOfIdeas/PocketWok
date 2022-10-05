@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
 
+/* Initialization */
 *{
     padding: 0;
     margin: 0;
@@ -11,110 +12,58 @@
     font-family: 'Oswald', sans-serif;
     --text-primary: black;
     --text-secondary: darkgrey;
-    --bg-primary: #23232e;
-    --bg-secondary: #141418;
-    --base-color: lightgrey;
-    --accent-color: white;
-    --palette-display: "block";
-}
-
-
-/* Large Title Layout */
-.largeTitle {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    font-size: 15vw;
-    align-content: center;
-    top: 0.5em;
+    --bg-primary: #fff6ce;
+    --bg-secondary: #d89f3d;
 }
 
 
 /* Main Content Layout */
-body {
-    color: var(--text-primary);
-    background: white;
-    margin: 0;
-    padding: 0;
-    overflow-x: none;
+main {
+    margin: 50px;
 }
 
-h1 {
-    color: var(--text-primary);
-    font-size: 80px;
-    letter-spacing: 8px;
-    margin-bottom: 15px;
+.largeTitle {
+    display: flex;
+    font-size: 150px;
+    justify-content: center;
+    align-content: center;
 }
 
-.subhead {
-    font-size: 35px;
-    color: var(--text-secondary);
-    margin-top: 0;
-    margin-bottom: 0;
+.contentList {
+    list-style: none;
 }
 
-ul {
-    list-style-type: none;
-    line-height: 2.5;
-}
-
-.question {
-    margin-top: 40px;
-    letter-spacing: 5px;
-}
-
-.response {
-    letter-spacing: 2px;
-    font-weight: 300;
-    margin-bottom: 10vh;
-}
-
-
-li {
-    margin-bottom: 20px;
-}
-
-audio, img {
-    margin-left: 35vw;
-    margin-bottom: 10vh;
-}
-
-.buyButton {
-    position: absolute;
-    left: 45%;
-    transform: translate(0, -50%);
-    align-items: center;
-    width: 12em;
-    height: 4em;
-    border-radius: 10px;
-    border: none;
-    font-size: 1em;
-    background-color: rgb(37, 187, 37);
-    color: white;
-    text-shadow: 0 0 4px white;
-    transition: filter ease 300ms;   
-}
-
-.buyButton:hover {
-    filter:brightness(90%);
-    cursor: pointer;
-}
-
-.bottomSpace {
-    color: black;
-    margin-bottom: 20vh;
-}
-
-.buyPrompt {
+.container {
+    display: flex;
+    justify-content: center;
     text-align: center;
 }
 
+.heading {
+    font-size: 50px;
+}
+
+.content {
+    font-size: 40px;
+}
+
+/* Small Screen Media Query (NEEDS WORK) */
+@media only screen and (max-width: 600px) {
+    .heading {
+        font-size: 30px;
+    }
+
+    .content {
+        font-size: 20px;
+    }
+}
+
+
 /* Game Canvas */
 #canvas {
-    /* Positioning */
+    /* Sizing */
     width: 1000px;
     height: 600px;
-    margin-right: 20px;
     
     /* Styling */
     background-color: #fde7c9;
@@ -136,125 +85,4 @@ body::-webkit-scrollbar-track {
 
 body::-webkit-scrollbar-thumb {
     background: darkgoldenrod;
-}
-
-main {
-    margin-left: 5rem;
-    padding: 1rem;
-}
-
-/* Color Wheel Handling */
-#picker {
-padding: 20px;
-position: absolute;
-left: 280px;
-bottom: -300px;
-padding: 60px 60px 60px 30px;
-filter: opacity(100);
-transition: bottom 500ms ease;
-}
-
-#paletteBtn:hover #picker {
-    bottom: -40px;
-}
-
-#colorPaletteSelector{
-    min-width: 200px;
-}
-
-
-/* Small Screen Media Query */
-@media only screen and (max-width: 600px) {
-    main {
-        margin: auto;
-        padding: 1rem;
-    }
-
-    .largeTitle svg {
-        display: none;
-    }
-
-    ul {
-        padding-left: 0px;
-    }
-    .mainContent {
-        margin: auto 8vw;
-
-    }
-
-    .question {
-        font-size: 30px;
-        text-align: center;
-
-    }
-
-    .response {
-        font-size: 20px;
-        text-align: center;
-    }
-
-    .navbar {
-        position: fixed;
-        bottom: 0;
-        width: 100vw;
-        height: 5rem;
-        background-color: var(--bg-primary);
-        z-index: 100;
-    }
-
-    .logo {
-        display: none;
-    }
-
-    .navbar-nav {
-        flex-direction: row;
-        justify-content: center;
-    }
-}
-
-/* Large Screens */
-@media only screen and (min-width: 600px) {
-    main {
-        margin-left: 5rem;
-        padding: 1rem;
-    }
-
-    .smallTitle {
-        display: none;
-    }
-
-    .mainContent {
-        margin: auto 8vw;
-    }
-
-    .question {
-        font-size: 35px;
-        text-align: center;
-    }
-
-    .response {
-        font-size: 20px;
-        text-align: center;
-    }
-
-    .navbar {
-        width: 5rem;
-        height: 100vh;
-        position: fixed;
-        background-color: var(--bg-primary);
-        transition: width 200ms ease-in;
-    }
-
-    .navbar:hover {
-        width: 18rem;
-    }
-
-    .navbar:hover .link-text {
-        display: block;
-    }
-
-    .nav-link svg {
-        min-width: 2rem;
-        margin: 0 1.5rem;
-    }
 }

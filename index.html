@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script defer src="https://cdn.jsdelivr.net/npm/@jaames/iro@3"></script>
+    <link rel="shortcut icon" href="assets/wok.png" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
     <title>Pocket Wok</title>
 </head>
@@ -12,37 +13,37 @@
         <div class="largeTitle">
             Pocket Wok
         </div>
+        <ul class="contentList">
+            <li class="container">
+                <div class="textRow">
+                    <h1 class="heading">What is Pocket Wok?</h1>
+                    <p class="content">Pocket Wok is the future. Pocket Wok is life. Pocket Wok allows you to take the classic Chinese cooking appliance anywhere. Using nothing but a micro-USB to connect Pocket Wok to power, you can create masterful dishes that will be the talk of the town. No matter what you are doing or where you go, Pocket Wok is there. Watching. Waiting.</p>
+                </div>
+                
+                <div class="textRow">    
+                    <h1 class="heading">Why even use Pocket Wok?</h1>
+                    <p class="content">Sometime you want the taste of a home cooked meal but do not have access to the proper cookwear to get the job done. Never again. With the revolutionary creation of Pocket Wok, there is an end to an era. An era without great tasting meals at any moment.</p>
+                </div>
+            </li>
+            <li class="container">
+                <h1 class="heading">Listen to the Ad</h1>
+                <audio class="content" controls><source src="assets/pocketwok.mp3" type="audio/mpeg" ></audio>
+            </li>
+            <li class="container">
+                <h1 class="heading">Check out some photos</h1>
+                <img src="assets/pocketwokfront.jpg" alt="Pocket Wok Box" width="500" height="600">
+                <img src="assets/pocketwokback.jpg" alt="Pocket Wok Box" width="500" height="600">
+            </li>
+            <li class="container">
+                <h1 class="heading">Play the game</h1>
+                <canvas class="content" onclick="gameToggle()" id="canvas"></canvas>
+            </li>
 
-            <ul>
-                <li class="mainContent">
-                    <h1 class="question" style="margin-top: 200px;">What is Pocket Wok?</h1>
-                    <p class="response">Pocket Wok is the future. Pocket Wok is life. Pocket Wok allows you to take the classic Chinese cooking appliance anywhere. Using nothing but a micro-USB to connect Pocket Wok to power, you can create masterful dishes that will be the talk of the town. No matter what you are doing or where you go, Pocket Wok is there. Watching. Waiting.</p>
-                </li>
-                <li class="mainContent">
-                    <h1 class="question">Why even use Pocket Wok?</h1>
-                    <p class="response">Sometime you want the taste of a home cooked meal but do not have access to the proper cookwear to get the job done. Never again. With the revolutionary creation of Pocket Wok, there is an end to an era. An era without great tasting meals at any moment.</p>
-                </li>
-                <li class="mainContent">
-                    <h1 class="question">Listen to the Ad</h1>
-                    <audio controls>
-                        <source src="assets/pocketwok.mp3" type="audio/mpeg" ></audio>
-                    </audio>
-                </li>
-                <li class="mainContent">
-                    <h1 class="question">Check out some photos</h1>
-                    <img src="assets/pocketwokfront.jpg" alt="Pocket Wok Box" width="500" height="600">
-                    <img src="assets/pocketwokback.jpg" alt="Pocket Wok Box" width="500" height="600">
-                </li>
-                <li class="mainContent">
-                    <h1 class="question">Play the game</h1>
-                    <canvas onclick="gameToggle()" id="canvas"></canvas>
-                </li>
-
-                <div class="bottomSpace">-</div>
-                <h1 class="buyPrompt">Like what you see?</h1>
-                <button class="buyButton">Buy Now</button>
-            </ul>
             <div class="bottomSpace">-</div>
+            <h1 class="buyPrompt">Like what you see?</h1>
+            <button class="buyButton">Buy Now</button>
+        </ul>
+        <div class="bottomSpace">-</div>
     </main>
 
     <script>
