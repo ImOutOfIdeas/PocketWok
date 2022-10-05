@@ -5,6 +5,7 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    
 }
 
 :root {
@@ -12,49 +13,101 @@
     font-family: 'Oswald', sans-serif;
     --text-primary: black;
     --text-secondary: darkgrey;
-    --bg-primary: #fff6ce;
+    --bg-primary: #fff8da;
     --bg-secondary: #d89f3d;
 }
 
 
 /* Main Content Layout */
 main {
-    margin: 50px;
-}
-
-.largeTitle {
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    width: 100vw;
     display: flex;
-    font-size: 150px;
     justify-content: center;
     align-content: center;
-}
-
-.contentList {
-    list-style: none;
-}
-
-.container {
-    display: flex;
-    justify-content: center;
+    flex-direction: column;
     text-align: center;
 }
 
-.heading {
-    font-size: 50px;
+main > * {
+    flex-grow: 1;
 }
 
+.largeTitle {
+    font-size: 8vw;
+    margin: 0;
+    padding: 0;
+}
+
+.heading {
+    font-size: 4vw;
+    margin-bottom: 50px;
+}
 .content {
-    font-size: 40px;
+    font-size: 25px;
+    margin-bottom: 100px;
+}
+
+img {
+    width: 40vw;
+    height: 40vw;
+}
+
+.buyButton {
+    --color: rgb(82, 82, 255);
+    
+    margin: 100px auto;
+    width: 20vw;
+    height: 100px;
+    
+    font-size: 50px;
+    color: var(--color);
+    border: 5px solid var(--color);
+    border-radius: 15px;
+    background-color: white;
+
+    transition: color ease 400ms;
+    transition: background-color ease 400ms;
+}
+
+.buyButton:hover {
+    background-color: var(--color);
+    color: white;
+    cursor: pointer;
+}
+
+
+/* Main Flexbox Layout */
+.flexContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+}
+
+.flexElement {
+    width: 100vw;
+    flex-grow: 1;
+    flex-basis: 0;
+}
+
+.flexElement.text {
+    display: flex;
+    flex-direction: row;
+}
+
+.flexElement.text > div{
+    padding: 5vw;
+    flex-grow: 1;
+    flex-basis: 0;
 }
 
 /* Small Screen Media Query (NEEDS WORK) */
 @media only screen and (max-width: 600px) {
-    .heading {
-        font-size: 30px;
-    }
-
-    .content {
-        font-size: 20px;
+    .flexElement.text {
+        display: flex;
+        flex-direction: column;
     }
 }
 
@@ -62,8 +115,9 @@ main {
 /* Game Canvas */
 #canvas {
     /* Sizing */
-    width: 1000px;
-    height: 600px;
+    width: 60%;
+    height: 40vw;
+    margin: 0;
     
     /* Styling */
     background-color: #fde7c9;
