@@ -24,7 +24,7 @@
     position: relative;
     display: flex;
     justify-content: center;
-    font-size: 8em;
+    font-size: 15vw;
     align-content: center;
     top: 0.5em;
 }
@@ -36,7 +36,7 @@ body {
     background: white;
     margin: 0;
     padding: 0;
-    overflow-x: auto;
+    overflow-x: none;
 }
 
 h1 {
@@ -127,154 +127,21 @@ audio, img {
 
 /* Scrollbar styling */
 body::-webkit-scrollbar {
-    width: 0.35rem;
+    width: 10px;
 }
 
 body::-webkit-scrollbar-track {
-    background: black;
+    background: white;
 }
 
 body::-webkit-scrollbar-thumb {
-    background: var(--accent-color);
+    background: darkgoldenrod;
 }
 
 main {
     margin-left: 5rem;
     padding: 1rem;
 }
-
-
-
-/* Navbar Animation and Handling */
-.navbar-nav {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: left;
-    height: 100%;
-}
-
-.navbar-nav:hover .logo {
-    color: var(--accent-color);
-}
-
-.nav-item {
-    width: 100%;
-}
-
-.nav-link {
-    display: flex;
-    align-items: center;
-    height: 5rem;
-    color: var(--base-color);
-    text-decoration: none;
-    transition: color 400ms ease;
-}
-
-.nav-link:hover {
-    background: var(--bg-secondary);
-}
-.nav-link:hover .fill{
-    fill: var(--accent-color);
-    transition: fill 600ms ease;
-}
-.nav-link:hover .fillStroke{
-    fill: var(--accent-color);
-    stroke: var(--accent-color);
-    transition: fill, stroke 600ms ease;
-}
-.nav-link:hover .stroke{
-    stroke: var(--accent-color);
-    transition: stroke 600ms ease;
-}
-.navbar-nav:hover .logo .link-text{
-    color: var(--accent-color);
-}
-.nav-link:hover .link-text {
-    color: var(--accent-color);
-}
-.navbar-nav:hover .logo svg{
-    stroke: var(--accent-color);
-}
-
-
-.link-text {
-    color: var(--base-color);
-    font-size: 20px;
-    display: none;
-    margin-left: 1rem;
-}
-.navbar:hover .baricons .link-text{
-    animation: iconFade 600ms;
-}
-@keyframes iconFade {
-    0% {filter: opacity(0);}
-    20% {filter: opacity(0);}
-    100% {filter: opacity(100%);}
-}
-
-.logo {
-    align-items: center;
-    font-weight: bold;
-    text-transform: uppercase;
-    margin-bottom: 1rem;
-    text-align: center;
-    color: var(--accent-color);
-    background: var(--bg-secondary);
-    font-size: 1.5rem;
-    letter-spacing: 0.3ch;
-    width: 100%;
-    border-bottom: 2px solid var(--accent-color);
-}
-
-.nav-link svg {
-    max-width: 2rem;
-    margin: 0 1.5rem;
-}
-
-.logo .link-text {
-    margin-left: auto;
-    filter: opacity(100%);
-}
-
-.navbar:hover .logo .link-text{
-    animation: logoFade 700ms;
-}
-@keyframes logoFade {
-    0% {filter: opacity(0);}
-    20% {filter: opacity(0);}
-    100% {filter: opacity(100%);}
-}
-
-#accentSwitcher {
-    transform: rotate(0deg);
-    transition: transform 600ms;
-}
-
-.nav-link:hover #accentSwitcher {
-    transform: rotate(-360deg);
-}
-
-#logoIcon {
-    background: var(--bg-secondary);
-}
-
-#logoIcon:hover {
-    cursor: default;
-}
-
-.logo svg {
-    align-self: center;
-    transform: rotate(0deg);
-    transition: transform 600ms ease-in;
-}
-
-.navbar:hover .logo svg {
-    transform: rotate(-180deg);
-}
-
 
 /* Color Wheel Handling */
 #picker {
@@ -362,13 +229,12 @@ transition: bottom 500ms ease;
 
     .question {
         font-size: 35px;
-        text-align: left;
+        text-align: center;
     }
 
     .response {
         font-size: 20px;
-        text-align: right;
-        margin-left: 35vw;
+        text-align: center;
     }
 
     .navbar {

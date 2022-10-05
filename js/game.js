@@ -20,16 +20,15 @@ var running = false;
 var rightKey = false;
 var leftKey = false;
 
-// Create Images (Loaded in gameInit)
+// Create Images (Loaded in gameInit then updated in gameLoop)
 var wokImg = new Image();
 wokImg.src = '../assets/chefwok.png';
 
 var itemImg = new Image();
 itemImg.src = `../assets/items/${images[Math.floor(Math.random() * images.length)]}`;
 
-
+// Draws menu on page load
 drawStartMenu();
-
 
 // Runs once on setup
 function gameInit() {    
@@ -80,6 +79,7 @@ function gameLoop() {
     requestAnimationFrame(gameLoop);
 }
 
+// Checks if item hits wok
 function collisionCheck() {
     // Detects item colliding with wok (Point)
     if (item.x + item.w >= wok.x && item.x <= wok.x + wok.w && item.y + item.h >= wok.y && item.y <= wok.y + wok.h) {
@@ -104,12 +104,12 @@ function collisionCheck() {
     }
 }
 
+// Checks if item hits floor
 function gameOverCheck() {
     // Detects an item going past the wok (Game Over)
     if (item.y > canvas.height) {
         // Game Over Menu
         drawGameoverMenu();
-        
         
         // Add space to replay Listener;
         window.addEventListener('keydown', (e) => {
@@ -120,7 +120,6 @@ function gameOverCheck() {
             }
         })
         
-        
         // Falsifies running bool and exits out of gameLoop
         running = false;
         return;
@@ -130,13 +129,13 @@ function gameOverCheck() {
 // Menu Functions
 function drawStartMenu() {
     drawTextCenter("Pocket Wok", 160, canvas.height / 4, 5);
-    drawTextCenter("Use The Arrow Keys To Control The Chef", 40, canvas.height / 1.18, 0);
-    drawTextCenter("Press Space Bar Or Click To Start", 40, canvas.height / 1.02, 0);
+    drawTextCenter("Use The Arrow Keys To Control The Chef", 50, canvas.height / 1.05, 2);
+    drawTextCenter("Click To Start", 60, canvas.height / 3.05, 2);
 }
 
 function drawGameoverMenu() {
     drawTextCenter("Game Over", 160, canvas.height / 4, 5);
-    drawTextCenter(`You caught ${score} ingredients`, 60, canvas.height / 3, 2);
+    drawTextCenter(`You caught ${score} ingredients`, 60, canvas.height / 3, 1.8);
     drawTextCenter("Press Space Bar Or Click To Play Again", 40, canvas.height / 1.05, 0);
 }
 
