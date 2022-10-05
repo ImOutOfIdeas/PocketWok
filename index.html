@@ -8,7 +8,7 @@
     <title>Pocket Wok</title>
 </head>
 <body>
-    <!-- Z-index ensures navbar is on top of content -->
+    <!-- Z-index ensures navbar is on top of all other content -->
     <nav class="navbar" style="z-index: 100;">
         <ul class="navbar-nav">
             <li class="logo">
@@ -88,14 +88,23 @@
                 </li>
                 <li class="mainContent">
                     <h1 class="question">Play the game</h1>
-                    <canvas onclick="gameToggle()" class="response" id="canvas"></canvas>
+                    <canvas onclick="gameToggle()" id="canvas"></canvas>
                 </li>
 
+                <div class="bottomSpace">-</div>
+                <h1 class="buyPrompt">Like what you see?</h1>
                 <button class="buyButton">Buy Now</button>
             </ul>
             <div class="bottomSpace">-</div>
     </main>
 
+    <script>
+        // Stops Scroll on spacebar press (For Game)
+        window.addEventListener('keydown', function() {if (event.keyCode == 32) {document.body.style.overflow = "hidden";}});
+        window.addEventListener('keyup', function() {if (event.keyCode == 32) {document.body.style.overflow = "auto";}});
+    </script>
+
+    <script src="js/title.js"></script>
     <script src="js/wok.js"></script>
     <script src="js/item.js"></script>
     <script src="js/game.js"></script>

@@ -1,10 +1,5 @@
 const logo = document.querySelectorAll("#logo path");
 
-/*// Gives Svg Lengths for start effect
-for (var i = 0; i<logo.length; i++) {
-    console.log(`"Letter ${i + 1} is ${logo[i].getTotalLength()}`);
-}*/
-
 const accent = localStorage.getItem("--accent-color");
 const switcher = document.getElementById("accentSwitcher");
 
@@ -56,10 +51,6 @@ var colors = [ "red", "blue", "yellow", "purple", "Orange", "turquoise", "pink",
 var accentColor = ["#F71735", "#008BF8", "#F5F749", "#C04CFD", "#FFAC0D", "#41EAD4", "#C52184", "#50FFB1", "#1EDA1B"];
 var grammar = '#JSGF V1.0; grammar colors; public <color> = ' + colors.join(' | ') + ' ;';
 
-console.log("Voice commands, as of now, are not supported on MS Edge.")
-console.log("--------------------------------------------------------")
-console.log("List of available voice command colors: " + colors)
-
 var recognition = new SpeechRecognition();
 var speechRecognitionList = new SpeechGrammarList();
 speechRecognitionList.addFromString(grammar, 1);
@@ -84,7 +75,7 @@ recognition.onspeechend = function() {
 };
 
 recognition.onnomatch = function(event) {
-    console.log("I didn't recognise that color.");
+    console.log("Unrecognized color.");
     setTimeout (reset, 800);
 }
 

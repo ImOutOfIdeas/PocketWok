@@ -1,56 +1,41 @@
 /** @type {HTMLCanvasElement} */
 
-// Helper function
-function rando(min, max) {
-    return Math.random() * (max - min) + min;
-}
-
 
 // Setup
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
-canvas.width = 600;
-canvas.height = 400;
+canvas.width = 1200;
+canvas.height = 800;
+
+// Width and Height set in css file
+canvas.style.width = 600;
+canvas.style.height = 400;
 
 // Globally initialize variables
 var item; 
 var wok;
 var score;
-var images = [];
+var images = ['broccoli.png', 'carrot.png', 'ginger.png', 'onion.png', 'onion2.png', 'shrimp.png'];
 var running = false;
 var rightKey = false;
 var leftKey = false;
 
 // Create Images (Loaded in gameInit)
 var wokImg = new Image();
+wokImg.src = '../assets/chefwok.png';
+
 var itemImg = new Image();
+itemImg.src = `../assets/items/${images[Math.floor(Math.random() * images.length)]}`;
+
 
 drawStartMenu();
 
-// Called on canvas click
-function gameToggle() {
-    if (!running) {
-        running = !running;
-        gameInit();
-    }
-}
 
 // Runs once on setup
-function gameInit() {
-    // Load Images (Update in gameLoop)
-    wokImg.onload = () => {
-        ctx.drawImage(wokImg, wok.x, wok.y, wok.w, wok.h);  
-        console.log("Wok Loaded"); 
-    }
-    itemImg.onload = () => {
-        ctx.drawImage(itemImg, item.x, item.y, item.w, item.h);  
-        console.log("Item Loaded"); 
-    }
-    
-    
+function gameInit() {    
     // Instantiate Game Objects
-    item = new Item(rando(0, 575), -25, 2);
-    wok = new Wok(250, 350);
+    item = new Item(rando(50, canvas.width), -50, 5);
+    wok = new Wok(canvas.width / 2, canvas.height - 200);
     
     // Initialize values
     score = 0;
@@ -64,23 +49,22 @@ function gameLoop() {
     // Clear Screen Each Frame
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     
-    
     // Allows player control
-    if (rightKey && wok.x + wok.w < 600) wok.x += wok.speed;
-    if (leftKey && wok.x > 0) wok.x -= wok.speed;
+    if (rightKey && wok.x + wok.w <= canvas.width) wok.x += wok.speed;
+    if (leftKey && wok.x >= 0) wok.x -= wok.speed;
     
     // Check for item movement then collision and game over
     item.update();
     collisionCheck();
     gameOverCheck();
     
-    // Draw game objects
-    item.draw();
-    wok.draw();
+    // Draws sprites on updated location each cycle
+    ctx.drawImage(wokImg, wok.x - 100, wok.y - 160, wok.w + 200, wok.h + 320);
+    ctx.drawImage(itemImg, item.x - 10, item.y - 10, item.w + 10, item.h + 10);
     
-    // Dont Have Images Yet!
-    // ctx.drawImage(wokImg, wok.x, wok.y, wok.w, wok.h);
-    // ctx.drawImage(itemImg, item.x, item.y, item.w, item.h);  
+    // Draw game objects hitboxes (Debugging)
+    // wok.draw();
+    // item.draw();
     
     // End game if not supposed to be running
     if (!running) {
@@ -88,8 +72,9 @@ function gameLoop() {
     }
     
     // Show Score in top left
-    ctx.font = "20px Arial";
-    ctx.fillText(`Ingredients caught: ${score}`, 10, 30);
+    ctx.font = "40px Arial";
+    ctx.fillStyle = "black";
+    ctx.fillText(`Ingredients: ${score}`, 10, 43);
     
     // Repeat Game Loop
     requestAnimationFrame(gameLoop);
@@ -98,26 +83,24 @@ function gameLoop() {
 function collisionCheck() {
     // Detects item colliding with wok (Point)
     if (item.x + item.w >= wok.x && item.x <= wok.x + wok.w && item.y + item.h >= wok.y && item.y <= wok.y + wok.h) {
-        // Keep array of images for itemImg
-        // itemImg = new Image();
-        // itemImg.src = images[Math.floor(Math.random() * images.length)];
+        // Might add bad items (to avoid)
+        // If (item == bad) running = false;
         
-        // itemImg.onload = () => {
-        //     ctx.drawImage(itemImg, item.x, item.y, item.w, item.h);  
-        //     console.log("Item Loaded"); 
-        // };
+        // Choses a random item each time if caught
+        itemImg.src = `../assets/items/${images[Math.floor(Math.random() * images.length)]}`;
         
         // Increment Score and update UI
         score += 1;
         
         // increase speed every 5 points scored (Runs once on game)
         if (score % 5 == 0) {
-            item.grav += 0.5;
+            item.grav += 0.6;
+            wok.speed += 0.3;
         }
         
         // Reset item to top w/ random x
         item.y = -25;
-        item.x = rando(0, 575);
+        item.x = rando(50, canvas.width - 50);
     }
 }
 
@@ -126,7 +109,7 @@ function gameOverCheck() {
     if (item.y > canvas.height) {
         // Game Over Menu
         drawGameoverMenu();
-
+        
         
         // Add space to replay Listener;
         window.addEventListener('keydown', (e) => {
@@ -144,31 +127,41 @@ function gameOverCheck() {
     }
 }
 
-
+// Menu Functions
 function drawStartMenu() {
-    ctx.fillStyle = "white";
-    ctx.stroke = "black";
-    ctx.font = "50px Arial";
-    ctx.lineWidth = 1.3;
-    ctx.fillText("Pocket Wok", canvas.width / 3.8, canvas.height / 3);
-    ctx.strokeText("Pocket Wok", canvas.width / 3.8, canvas.height / 3);
-    ctx.font = "30px Arial";
-    ctx.lineWidth = 1;
-    ctx.fillText("The Game!", canvas.width / 2.8, canvas.height / 2.4);
-    ctx.strokeText("The Game!", canvas.width / 2.8, canvas.height / 2.4);
-    ctx.font = "20px Arial";
-    ctx.fillText("Click Anywhere To Begin.", canvas.width / 3.2, canvas.height / 1.6);
+    drawTextCenter("Pocket Wok", 160, canvas.height / 4, 5);
+    drawTextCenter("Use The Arrow Keys To Control The Chef", 40, canvas.height / 1.18, 0);
+    drawTextCenter("Press Space Bar Or Click To Start", 40, canvas.height / 1.02, 0);
 }
 
 function drawGameoverMenu() {
-    ctx.font = "45px Arial";
-    ctx.fillText("You Are A Loser!", canvas.width / 5.2, canvas.height / 3);
-    ctx.strokeText("You Are A Loser!", canvas.width / 5.2, canvas.height / 3);
-    ctx.font = "25px Arial";
-    ctx.fillText(`You caught ${score} ingredients, pitiful.`, canvas.width / 6.5, canvas.height / 2.4);
-    ctx.strokeText(`You caught ${score} ingredients, pitiful.`, canvas.width / 6.5, canvas.height / 2.4);
-    ctx.font = "15px Arial";
-    ctx.fillText("Press Spacebar To Play Again.", canvas.width / 3.6, canvas.height / 2);
+    drawTextCenter("Game Over", 160, canvas.height / 4, 5);
+    drawTextCenter(`You caught ${score} ingredients`, 60, canvas.height / 3, 2);
+    drawTextCenter("Press Space Bar Or Click To Play Again", 40, canvas.height / 1.05, 0);
+}
+
+// Helper functions
+function rando(min, max) {
+    return Math.random() * (max - min) + min;
+}
+
+function gameToggle() { // Called on canvas click
+    if (!running) {
+        running = !running;
+        gameInit();
+    }
+}
+
+function drawTextCenter(text, fontSize, yPos, lineW) {
+    ctx.fillStyle = "white";
+    ctx.stroke = "black";
+    ctx.font = `${fontSize}px Arial`;
+    ctx.fillText(text, (canvas.width / 2) - (ctx.measureText(text).width / 2), yPos);
+    
+    if (lineW != 0) {
+        ctx.lineWidth = lineW;
+        ctx.strokeText(text, (canvas.width / 2) - (ctx.measureText(text).width / 2), yPos);
+    }
 }
 
 // Add Event Listeners

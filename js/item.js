@@ -2,8 +2,8 @@ class Item {
     constructor(x, y, grav) {
         this.x = x;
         this.y = y;
-        this.w = 25;
-        this.h = 25;
+        this.w = 50;
+        this.h = 50;
         this.grav = grav;
     }
     update() {

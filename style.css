@@ -36,7 +36,7 @@ body {
     background: white;
     margin: 0;
     padding: 0;
-    overflow-x: hidden;
+    overflow-x: auto;
 }
 
 h1 {
@@ -105,15 +105,23 @@ audio, img {
     margin-bottom: 20vh;
 }
 
+.buyPrompt {
+    text-align: center;
+}
 
 /* Game Canvas */
 #canvas {
-    background-color: #fde7c9;
-    border-radius: 10px;
-    border: solid 2px black;
+    /* Positioning */
+    width: 1000px;
+    height: 600px;
     margin-right: 20px;
+    
+    /* Styling */
+    background-color: #fde7c9;
     background-image: url(assets/pixelKitchen.png);
     background-size: contain;
+    border-radius: 10px;
+    border: solid 2px black;
 }
 
 

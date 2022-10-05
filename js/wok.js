@@ -2,9 +2,9 @@ class Wok {
     constructor(x, y) {
         this.x = x;
         this.y = y;
-        this.w = 70;
-        this.h = 25;
-        this.speed = 5;
+        this.w = 140;
+        this.h = 40;
+        this.speed = 12;
         this.rightKey = false;
         this.leftKey = false;
     }
