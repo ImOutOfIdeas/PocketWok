@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -46,8 +46,9 @@
 
     <script>
         // Stops Scroll on spacebar press (For Game)
-        window.addEventListener('keydown', function() {if (event.keyCode == 32) {document.body.style.overflow = "hidden";}});
-        window.addEventListener('keyup', function() {if (event.keyCode == 32) {document.body.style.overflow = "auto";}});
+        window.addEventListener('keydown', function() {if (event.keyCode == 32) {document.body.style.overflowY = "hidden";}});
+        window.addEventListener('keyup', function() {if (event.keyCode == 32) {document.body.style.overflowY = "visible";}});
+        document.body.style.overflowX = "hidden";
     </script>
 
     <script src="js/title.js"></script>

@@ -1,6 +1,5 @@
 /** @type {HTMLCanvasElement} */
 
-
 // Setup
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
@@ -67,6 +66,8 @@ function gameLoop() {
     
     // End game if not supposed to be running
     if (!running) {
+        // Game Over Menu
+        drawGameoverMenu();
         return;
     }
     
@@ -108,9 +109,6 @@ function collisionCheck() {
 function gameOverCheck() {
     // Detects an item going past the wok (Game Over)
     if (item.y > canvas.height) {
-        // Game Over Menu
-        drawGameoverMenu();
-        
         // Add space to replay Listener;
         window.addEventListener('keydown', (e) => {
             switch(e.key) {
@@ -134,8 +132,8 @@ function drawStartMenu() {
 }
 
 function drawGameoverMenu() {
-    drawTextCenter("Game Over", 160, canvas.height / 4, 5);
-    drawTextCenter(`You caught ${score} ingredients`, 60, canvas.height / 3, 1.8);
+    drawTextCenter("Game Over", 160, canvas.height / 2.4, 5);
+    drawTextCenter(`You Caught ${score} Ingredients`, 50, canvas.height / 2, 1.3);
     drawTextCenter("Press Space Bar Or Click To Play Again", 40, canvas.height / 1.05, 0);
 }
 
