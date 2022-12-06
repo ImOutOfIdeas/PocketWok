@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
 
-/* Initialization */
-*{
+/* General Layout & Styling*/
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
@@ -16,35 +16,22 @@
     --bg-secondary: #d89f3d;
 }
 
-/* Main Content Layout */
-main {
-    margin: 0;
-    padding: 0;
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    flex-direction: column;
+body {
     text-align: center;
 }
 
-main > * {
-    flex-grow: 1;
-}
-
-.largeTitle {
-    font-size: 8vw;
+.title {
+    font-size: 6vw;
     margin: 0;
     padding: 0;
-
 }
 
 .heading {
-    font-size: 4vw;
+    font-size: 3vw;
     margin-bottom: 50px;
 }
 .content {
-    font-size: 25px;
+    font-size: 26px;
     margin-bottom: 100px;
 }
 
@@ -53,8 +40,60 @@ img {
     height: 40vw;
 }
 
+/* Grid Layout */
+.gridContainer {
+    display: grid;
+}
+
+.gridContainer > * {
+    height: 90vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top 0px;
+}
+
+.gridElement:nth-child(1) {
+    background-image: url(assets/images/wokflip.png);
+}
+.gridElement:nth-child(2) {
+    background-image: url(assets/images/wokin.png);
+    padding-right: 50vw;
+    padding-left: 10vw;
+    padding-top: 20vh;
+}
+.gridElement:nth-child(3) {
+    background-image: url(assets/images/confused.png);
+    padding-right: 10vw;
+    padding-left: 50vw;
+    padding-top: 10vh;
+}
+
+/* Small Screen Media Query (NEEDS WORK) */
+@media only screen and (max-width: 600px) {
+    .flexElement.text {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+/* Game Canvas */
+#canvas {
+    /* Sizing */
+    width: 60%;
+    height: 40vw;
+    margin: 0;
+    
+    /* Styling */
+    background-color: #fde7c9;
+    background-image: url(assets/game/pixelKitchen.png);
+    background-size: contain;
+    border-radius: 10px;
+    border: solid 2px black;
+}
+
+/* Buy Now Persistent Button */
 .buyButton {
-    --color: rgb(82, 82, 255);
+    --color: rgb(85, 100, 255);
     
     margin: 100px auto;
     width: 20vw;
@@ -76,59 +115,9 @@ img {
     cursor: pointer;
 }
 
-
-/* Main Flexbox Layout */
-.flexContainer {
-    display: flex;
-    flex-direction: column;
-    width: 100vw;
-}
-
-.flexElement {
-    width: 100vw;
-    flex-grow: 1;
-    flex-basis: 0;
-}
-
-.flexElement.text {
-    display: flex;
-    flex-direction: row;
-}
-
-.flexElement.text > div{
-    padding: 5vw;
-    flex-grow: 1;
-    flex-basis: 0;
-}
-
-/* Small Screen Media Query (NEEDS WORK) */
-@media only screen and (max-width: 600px) {
-    .flexElement.text {
-        display: flex;
-        flex-direction: column;
-    }
-}
-
-
-/* Game Canvas */
-#canvas {
-    /* Sizing */
-    width: 60%;
-    height: 40vw;
-    margin: 0;
-    
-    /* Styling */
-    background-color: #fde7c9;
-    background-image: url(assets/pixelKitchen.png);
-    background-size: contain;
-    border-radius: 10px;
-    border: solid 2px black;
-}
-
-
 /* Scrollbar styling */
 body::-webkit-scrollbar {
-    width: 10px;
+    width: 0px;
 }
 
 body::-webkit-scrollbar-track {

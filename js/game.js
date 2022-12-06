@@ -21,10 +21,10 @@ var leftKey = false;
 
 // Create Images (Loaded in gameInit then updated in gameLoop)
 var wokImg = new Image();
-wokImg.src = '../assets/chefwok.png';
+wokImg.src = '../assets/game/chefwok.png';
 
 var itemImg = new Image();
-itemImg.src = `../assets/items/${images[Math.floor(Math.random() * images.length)]}`;
+itemImg.src = `../assets/game/${images[Math.floor(Math.random() * images.length)]}`;
 
 // Draws menu on page load
 drawStartMenu();
@@ -88,7 +88,7 @@ function collisionCheck() {
         // If (item == bad) running = false;
         
         // Choses a random item each time if caught
-        itemImg.src = `../assets/items/${images[Math.floor(Math.random() * images.length)]}`;
+        itemImg.src = `../assets/game/${images[Math.floor(Math.random() * images.length)]}`;
         
         // Increment Score and update UI
         score += 1;
