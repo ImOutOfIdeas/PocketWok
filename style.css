@@ -1,129 +1,151 @@
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap");
 
 /* General Layout & Styling*/
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 :root {
-    font-size: 16px;
-    font-family: 'Oswald', sans-serif;
-    --text-primary: black;
-    --text-secondary: darkgrey;
-    --bg-primary: #fff8da;
-    --bg-secondary: #d89f3d;
+  font-size: 16px;
+  font-family: "Oswald", sans-serif;
+  --text-primary: black;
+  --text-secondary: darkgrey;
+  --bg-primary: #fff8da;
+  --bg-secondary: #d89f3d;
 }
 
 body {
-    text-align: center;
+  text-align: center;
+  user-select: none;
 }
 
 .title {
-    font-size: 6vw;
-    margin: 0;
-    padding: 0;
+  font-size: 6vw;
+  padding: 0;
 }
 
 .heading {
-    font-size: 3vw;
-    margin-bottom: 50px;
+  font-size: 5vw;
+  margin-bottom: 50px;
 }
 .content {
-    font-size: 26px;
-    margin-bottom: 100px;
+  font-size: 26px;
+  margin-bottom: 100px;
 }
 
 img {
-    width: 40vw;
-    height: 40vw;
+  width: 40vw;
+  height: 40vw;
 }
 
 /* Grid Layout */
 .gridContainer {
-    display: grid;
+  display: grid;
 }
 
 .gridContainer > * {
-    height: 90vh;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: top 0px;
+  height: 90vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top 0px;
 }
 
 .gridElement:nth-child(1) {
-    background-image: url(assets/images/wokflip.png);
+  background-image: url(assets/images/wokflip.png);
 }
 .gridElement:nth-child(2) {
-    background-image: url(assets/images/wokin.png);
-    padding-right: 50vw;
-    padding-left: 10vw;
-    padding-top: 20vh;
+  background-image: url(assets/images/wokin.png);
+  padding-right: 50vw;
+  padding-left: 10vw;
+  padding-top: 20vh;
 }
 .gridElement:nth-child(3) {
-    background-image: url(assets/images/confused.png);
-    padding-right: 10vw;
-    padding-left: 50vw;
-    padding-top: 10vh;
+  background-image: url(assets/images/confused.png);
+  padding-right: 10vw;
+  padding-left: 50vw;
+  padding-top: 10vh;
 }
-
-/* Small Screen Media Query (NEEDS WORK) */
-@media only screen and (max-width: 600px) {
-    .flexElement.text {
-        display: flex;
-        flex-direction: column;
-    }
+.gridElement:nth-child(4) {
+  background-image: url(assets/images/poster.png);
+  padding-right: 50vw;
+  padding-top: 20vh;
+  color: white;
+}
+.gridElement:nth-child(5) {
+  margin: 7vh 0;
+}
+.gridElement:nth-child(6) {
+  margin-bottom: 0;
+  padding-top: 10vh;
+  padding-bottom: 1000px;
+  background-image: linear-gradient(to bottom right, #fff6b7, #f6416c);
+}
+.gridElement:nth-child(6) > p {
+  margin-top: 200px;
 }
 
 /* Game Canvas */
 #canvas {
-    /* Sizing */
-    width: 60%;
-    height: 40vw;
-    margin: 0;
-    
-    /* Styling */
-    background-color: #fde7c9;
-    background-image: url(assets/game/pixelKitchen.png);
-    background-size: contain;
-    border-radius: 10px;
-    border: solid 2px black;
+  /* Sizing */
+  width: 60%;
+  height: 40vw;
+  margin: 0;
+
+  /* Styling */
+  background-color: #fde7c9;
+  background-image: url(assets/game/pixelKitchen.png);
+  background-size: contain;
+  border-radius: 10px;
+  border: solid 2px black;
+}
+
+/* Small Screen Media Query (NEEDS WORK) */
+@media only screen and (max-width: 600px) {
 }
 
 /* Buy Now Persistent Button */
 .buyButton {
-    --color: rgb(85, 100, 255);
-    
-    margin: 100px auto;
-    width: 20vw;
-    height: 100px;
-    
-    font-size: 50px;
-    color: var(--color);
-    border: 5px solid var(--color);
-    border-radius: 15px;
-    background-color: white;
+  position: fixed;
+  --color: rgb(85, 100, 255);
 
-    transition: color ease 400ms;
-    transition: background-color ease 400ms;
+  width: 20vw;
+  height: 75px;
+  left: 93vw;
+  top: 78vh;
+  padding-left: 0;
+
+  font-size: 3vw;
+  color: rgba(0, 0, 0, 0);
+  border: 4px solid var(--color);
+  border-radius: 15px 0 0 15px;
+  background-color: white;
+
+  transition: all ease 500ms;
 }
 
 .buyButton:hover {
-    background-color: var(--color);
-    color: white;
-    cursor: pointer;
+  background-color: var(--color);
+  color: white;
+  cursor: pointer;
+  left: 80vw;
+}
+
+.buyButton > img {
+  width: 35px;
+  height: 35px;
 }
 
 /* Scrollbar styling */
 body::-webkit-scrollbar {
-    width: 0px;
+  width: 0px;
 }
 
 body::-webkit-scrollbar-track {
-    background: white;
+  background: white;
 }
 
 body::-webkit-scrollbar-thumb {
-    background: darkgoldenrod;
+  background: darkgoldenrod;
 }
