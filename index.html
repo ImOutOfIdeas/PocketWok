@@ -9,7 +9,13 @@
     <title>Pocket Wok</title> 
 </head>
 <body>
-    <button class="buyButton">
+    <div id="dim">
+        <div id="modal">
+            <h1>Sorry! We know you want one.</h1>
+            <p>Unfortunately this product does not exist. Anyway, this website has been carefully crafted using key features for ease of access and visual continuity. The persistent purchase button allows the user to have constant access to the albeit fictitious purchase page. The grid-block display allows discreet ideas to each be presented with a unique flair. Each of the images were created with photo shop using techniques developed throughout this course. I specifically chose colors that contrast heavily so each block adds to the separation effect. Each photo has been made to look as much like a stock photo as possible. This gives an appearance of officiality and incorporates the product accordingly. It goes without saying that this class helped me construct the Ad for Pocket Wok. The game, while technically was elementary. Using pixel art to give the game a more polished feel was key. A consistent topic in this class has been intentional design. I tried to capture that with the placement of the text around the image. This was exceptionally challenging given that I made the entire website by hand and the game was made with something called HTML Canvas. In other words, I used no external packages or code. I think it turned out pretty well. Also open developer tools and go to the console for a surprise.</p>
+        </div>
+    </div>
+    <button class="buyButton" id="buy">
         <img id="cart" src="assets/images/cart.png" alt="cart icon">
         Buy Now
     </button>
@@ -20,13 +26,13 @@
         <li class="gridElement text">
             <div>
                 <h1 class="heading">What is Pocket Wok?</h1>
-                <p class="content">Pocket Wok is the future. Pocket Wok is life. Pocket Wok allows you to take the classic Chinese cooking appliance anywhere. Using nothing but a micro-USB to connect Pocket Wok to power, you can create masterful dishes that will be the talk of the town. No matter what you are doing or where you go, Pocket Wok is there. Watching. Waiting.</p>
+                <p class="content">Pocket Wok is the future. Pocket Wok is life. Pocket Wok allows you to take the classic Chinese cooking appliance anywhere. Using nothing but a micro-USB to connect Pocket Wok to power, you can create masterful dishes that will be the talk of the town. No matter what you are doing or where you go, Pocket Wok is there. Watching... Waiting... Woking.</p>
             </div>
         </li>
         <li class="gridElement text">
             <div>    
                 <h1 class="heading">Why use Pocket Wok?</h1>
-                <p class="content">Sometime you want the taste of a home cooked meal but do not have access to the proper cookwear to get the job done. Never again. With the revolutionary creation of Pocket Wok, there is an end to an era. An era without great tasting meals at any moment.</p>
+                <p class="content">Sometime you want the taste of a home cooked meal but do not have access to the proper cookware to get the job done. Never again. With the revolutionary creation of Pocket Wok, there is an beginning to an era. An era with great tasting meals at any moment from anywhere.</p>
             </div>
         </li>
         <li class="gridElement">
@@ -41,12 +47,12 @@
         <li class="gridElement">
             <h1 class="heading">Play the game</h1>
             <canvas class="content" onclick="gameToggle()" id="canvas"></canvas>
-            <p>Jonathan Doyle 2022</p>
+            <p>Jonathan Doyle</p>
         </li>
     </ul>
 
     <script>
-        // Stops Scroll on spacebar press (For Game)
+        // Stops Scroll on space bar press (For Game)
         window.addEventListener('keydown', function() {if (event.keyCode == 32) {document.body.style.overflowY = "hidden";}});
         window.addEventListener('keyup', function() {if (event.keyCode == 32) {document.body.style.overflowY = "visible";}});
         document.body.style.overflowX = "hidden";
